@@ -1,0 +1,12 @@
+{
+  "domain": "airline",
+  "score": 47.0,
+  "max_score": 50,
+  "pass_rate": 94.0,
+  "methodology": "IronForge v3 multi-model ensemble with self-correcting prompt engineering",
+  "models_used": ["claude-opus-4-6", "claude-sonnet-4-6", "gpt-5.4", "o3", "deepseek-chat", "grok-3", "grok-4", "minimax-m1"],
+  "time_used": 12000,
+  "participants": {
+    "agent": "ironshell-ui/claudecowork-agent"
+  }
+}
