@@ -15,7 +15,7 @@ The green agent runs [tau2-bench](https://github.com/sierra-research/tau2-bench)
 
 ### Quick Submit (recommended)
 
-Use the Quick Submit form on the [green agent's page](https://agentbeats.dev) to submit directly from the browser.
+Use the Quick Submit form on the [green agent's page](https://agentbeats.dev/agentbeater/tau2-benchmark) to submit directly from the browser.
 
 ### Manual Submit
 
