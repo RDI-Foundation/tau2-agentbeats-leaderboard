@@ -1,3 +1,4 @@
+# Manual trigger - run 1
 [green_agent]
 image = "ghcr.io/rdi-foundation/tau2-agentbeats:latest"
 env = { LOG_LEVEL = "INFO", OPENAI_API_KEY = "${OPENAI_API_KEY}", GEMINI_API_KEY = "${GEMINI_API_KEY}", DEEPSEEK_API_KEY = "${DEEPSEEK_API_KEY}" }
