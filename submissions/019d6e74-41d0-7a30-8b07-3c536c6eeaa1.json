@@ -1,0 +1,107 @@
+{
+  "manifest_version": "0.1.0",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "agent_agent_llm": {
+        "type": "string",
+        "description": "litellm model id (e.g. openai/gpt-4.1, anthropic/claude-sonnet-4-5)",
+        "default": "openrouter/openai/gpt-4o-mini"
+      },
+      "agent_agent_temperature": {
+        "type": "string",
+        "description": "Sampling temperature for the agent LLM",
+        "default": "0.0"
+      },
+      "agent_openrouter_api_key": {
+        "type": "string",
+        "secret": true
+      },
+      "green_deepseek_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "green_gemini_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "green_openai_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      }
+    },
+    "required": [],
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.1/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "domain": "airline",
+          "user_llm": "openai/gpt-4o-mini",
+          "num_tasks": 10,
+          "max_steps": 35
+        },
+        "participant_roles": {
+          "green": "green",
+          "purple1": "agent"
+        },
+        "callback_urls": {
+          "green": "${bindings.green-proxy.url}",
+          "purple1": "${bindings.purple1-proxy.url}"
+        }
+      }
+    },
+    "green": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/tau2-agentbeats/refs/heads/main/amber/amber-manifest-green.json5",
+      "config": {
+        "deepseek_api_key": "${config.green_deepseek_api_key}",
+        "gemini_api_key": "${config.green_gemini_api_key}",
+        "openai_api_key": "${config.green_openai_api_key}"
+      }
+    },
+    "agent": {
+      "manifest": "https://raw.githubusercontent.com/rezitdinovAR/tau2-purple/main/amber-manifest.json5",
+      "config": {
+        "agent_llm": "${config.agent_agent_llm}",
+        "agent_temperature": "${config.agent_agent_temperature}",
+        "openrouter_api_key": "${config.agent_openrouter_api_key}"
+      }
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#agent.a2a"
+    },
+    {
+      "to": "#green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "green-proxy"
+    },
+    {
+      "to": "#agent.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "purple1-proxy"
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "green": "019cf80f-8938-79c0-a221-4c7eadd43e7e",
+      "agent": "019d6d4d-6ace-78e3-9bf0-c9fca46283da"
+    }
+  }
+}
