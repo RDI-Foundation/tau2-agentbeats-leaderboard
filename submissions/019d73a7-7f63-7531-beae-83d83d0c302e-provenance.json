@@ -1,0 +1,22 @@
+{
+  "image_digests": {
+    "/agent": "ghcr.io/paulrychkov/agent-beats-tau2@sha256:8ba5c9f3f4648e5f6b1e98e2d4debafb07346ff6c937090aebbf9a403c5598c2",
+    "/gateway": "ghcr.io/rdi-foundation/agentbeats-gateway@sha256:30f49abcc6f0b14a2498e645cd6f1f7d0e57316f82224ba18f4cad76e08e02a7",
+    "/green": "ghcr.io/rdi-foundation/tau2-agentbeats@sha256:c5d731aefb3d0feaf9258931257c2839eaed8446f1d03bfa7e6823a15b0b9f7a"
+  },
+  "manifest_digests": {
+    "/": "sha256:V2gAp+Ws1gcZtVwoBDnhhzXNMyi6Zs0S8XaNlxk0r+Q=",
+    "/agent": "sha256:EoskgCFJLovIehA09B1w8CIqPP8NM5GolCbiHxLrxwI=",
+    "/gateway": "sha256:YWNLWt2Oy0QNqtALcnrq3tH63EZKGzOG1c1xI1EywTw=",
+    "/green": "sha256:wcKEZDltSU9wI5tT4awEHLcs+4B+hOuIJlTXXmSyAdU="
+  },
+  "timestamp": "2026-04-09T20:26:42Z",
+  "github_actions": {
+    "run_url": "https://github.com/RDI-Foundation/tau2-agentbeats-leaderboard/actions/runs/24208501332",
+    "ref": "refs/pull/413/merge",
+    "sha": "ef460c6d905d28368cc11af7379eeab26198aab5",
+    "repository_url": "https://github.com/RDI-Foundation/tau2-agentbeats-leaderboard",
+    "workflow_ref": "RDI-Foundation/tau2-agentbeats-leaderboard/.github/workflows/quick-submit.yml@refs/pull/413/merge",
+    "workflow_sha": "ef460c6d905d28368cc11af7379eeab26198aab5"
+  }
+}
