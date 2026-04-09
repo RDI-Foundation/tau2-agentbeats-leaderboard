@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "results": [
+    {
+      "domain": "airline",
+      "score": 1.0,
+      "max_score": 2,
+      "pass_rate": 50.0,
+      "task_rewards": {
+        "0": 1.0,
+        "1": 0.0
+      },
+      "time_used": 728.7655565738678
+    }
+  ],
+  "participants": {
+    "green": "019cf80f-8938-79c0-a221-4c7eadd43e7e",
+    "agent": "019d6d4d-6ace-78e3-9bf0-c9fca46283da"
+  }
+}
