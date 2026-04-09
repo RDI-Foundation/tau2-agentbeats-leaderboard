@@ -1,14 +1,14 @@
+# Manual trigger - run 2
 [green_agent]
-# agentbeats_id = ""
 image = "ghcr.io/rdi-foundation/tau2-agentbeats:latest"
-env = { LOG_LEVEL = "INFO", OPENAI_API_KEY = "${OPENAI_API_KEY}", GEMINI_API_KEY = "${GEMINI_API_KEY}", DEEPSEEK_API_KEY = "${DEEPSEEK_API_KEY}" }
+env = { LOG_LEVEL = "INFO", ANTHROPIC_API_KEY = "${ANTHROPIC_API_KEY}" }
 
 [[participants]]
-# agentbeats_id = ""
-image = "ghcr.io/rdi-foundation/tau2-purple-agentbeats:latest"
+image = "ghcr.io/keer0205/tau2-purple-agent:latest"
 name = "agent"
-env = { LOG_LEVEL = "INFO", AGENT_LLM = "openai/gpt-4o-mini", OPENAI_API_KEY = "${OPENAI_API_KEY}", GEMINI_API_KEY = "${GEMINI_API_KEY}", DEEPSEEK_API_KEY = "${DEEPSEEK_API_KEY}" }
+env = { LOG_LEVEL = "INFO", AGENT_LLM = "anthropic/claude-3-5-sonnet-20241022", ANTHROPIC_API_KEY = "${ANTHROPIC_API_KEY}" }
 
 [config]
 domain = "airline"
-user_llm = "openai/gpt-4o-mini"
+user_llm = "anthropic/claude-3-5-sonnet-20241022"
+num_tasks = 1
