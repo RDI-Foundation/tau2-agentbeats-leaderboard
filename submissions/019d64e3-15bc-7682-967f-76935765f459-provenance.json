@@ -1,0 +1,22 @@
+{
+  "image_digests": {
+    "/agent": "ghcr.io/shermanksenia/agent-hw@sha256:2182890d73d65ad9a010317600c112c20e9105669c9a883f00c09b6e809a29f0",
+    "/gateway": "ghcr.io/rdi-foundation/agentbeats-gateway@sha256:30f49abcc6f0b14a2498e645cd6f1f7d0e57316f82224ba18f4cad76e08e02a7",
+    "/green": "ghcr.io/rdi-foundation/tau2-agentbeats@sha256:c5d731aefb3d0feaf9258931257c2839eaed8446f1d03bfa7e6823a15b0b9f7a"
+  },
+  "manifest_digests": {
+    "/": "sha256:vg20PtEVuCRrvLd8pFRk6gY2f02mrnWg2tkQG6f7ops=",
+    "/agent": "sha256:qAqTfCTW+momqyaaPIVrWlqHb8k21XI/Gp2hqs8i3vo=",
+    "/gateway": "sha256:YWNLWt2Oy0QNqtALcnrq3tH63EZKGzOG1c1xI1EywTw=",
+    "/green": "sha256:wcKEZDltSU9wI5tT4awEHLcs+4B+hOuIJlTXXmSyAdU="
+  },
+  "timestamp": "2026-04-06T22:23:36Z",
+  "github_actions": {
+    "run_url": "https://github.com/RDI-Foundation/tau2-agentbeats-leaderboard/actions/runs/24054115663",
+    "ref": "refs/pull/261/merge",
+    "sha": "f7aee9918cd7a8a7c94e6de6b8f8b5de7b2d0222",
+    "repository_url": "https://github.com/RDI-Foundation/tau2-agentbeats-leaderboard",
+    "workflow_ref": "RDI-Foundation/tau2-agentbeats-leaderboard/.github/workflows/quick-submit.yml@refs/pull/261/merge",
+    "workflow_sha": "f7aee9918cd7a8a7c94e6de6b8f8b5de7b2d0222"
+  }
+}
