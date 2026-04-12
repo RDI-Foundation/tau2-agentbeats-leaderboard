@@ -1,0 +1,132 @@
+{
+  "manifest_version": "0.1.0",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "agent_agent_keys_inline": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "agent_agent_model_candidates": {
+        "type": "string",
+        "default": "cerebras:qwen-3-235b-a22b-instruct-2507,openrouter:minimax/minimax-m2.5:free"
+      },
+      "agent_agent_provider_priority": {
+        "type": "string",
+        "default": "cerebras,openrouter"
+      },
+      "agent_cerebras_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "agent_cerebras_base_url": {
+        "type": "string",
+        "default": "https://api.cerebras.ai/v1"
+      },
+      "agent_openrouter_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "agent_openrouter_base_url": {
+        "type": "string",
+        "default": "https://openrouter.ai/api/v1"
+      },
+      "green_deepseek_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "green_gemini_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "green_openai_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      }
+    },
+    "required": [
+      "agent_agent_model_candidates"
+    ],
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.1/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "domain": "airline",
+          "user_llm": "gemini/gemini-3.1-flash-lite-preview",
+          "user_llm_args": {
+            "temperature": 1.0
+          },
+          "max_steps": 200
+        },
+        "participant_roles": {
+          "green": "green",
+          "purple1": "agent"
+        },
+        "callback_urls": {
+          "green": "${bindings.green-proxy.url}",
+          "purple1": "${bindings.purple1-proxy.url}"
+        }
+      }
+    },
+    "green": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/tau2-agentbeats/refs/heads/main/amber/amber-manifest-green.json5",
+      "config": {
+        "deepseek_api_key": "${config.green_deepseek_api_key}",
+        "gemini_api_key": "${config.green_gemini_api_key}",
+        "openai_api_key": "${config.green_openai_api_key}"
+      }
+    },
+    "agent": {
+      "manifest": "https://raw.githubusercontent.com/nikiduki/agentx-competition/main/amber-manifest.json5",
+      "config": {
+        "agent_keys_inline": "${config.agent_agent_keys_inline}",
+        "agent_model_candidates": "${config.agent_agent_model_candidates}",
+        "agent_provider_priority": "${config.agent_agent_provider_priority}",
+        "cerebras_api_key": "${config.agent_cerebras_api_key}",
+        "cerebras_base_url": "${config.agent_cerebras_base_url}",
+        "openrouter_api_key": "${config.agent_openrouter_api_key}",
+        "openrouter_base_url": "${config.agent_openrouter_base_url}"
+      }
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#agent.a2a"
+    },
+    {
+      "to": "#green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "green-proxy"
+    },
+    {
+      "to": "#agent.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "purple1-proxy"
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "green": "019cf80f-8938-79c0-a221-4c7eadd43e7e",
+      "agent": "019d7f2b-8974-74e1-a093-62301db97ac0"
+    }
+  }
+}
