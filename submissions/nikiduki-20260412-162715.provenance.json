@@ -1,0 +1,17 @@
+{
+  "image_digests": {
+    "green-agent": "ghcr.io/rdi-foundation/tau2-agentbeats@sha256:c5d731aefb3d0feaf9258931257c2839eaed8446f1d03bfa7e6823a15b0b9f7a",
+    "agent": "ghcr.io/nikiduki/agentx-competition@sha256:f27cb334ac240b1c40286e3c16c368ca188f1e03c021a6ca07ff26abcf1f94d1",
+    "agentbeats-client": "ghcr.io/agentbeats/agentbeats-client@sha256:13dfe3ef4e583a80e7ce2fe3becd0ce3b879841368a7f4fa40b6ebbabeeb014e"
+  },
+  "timestamp": "2026-04-12T16:27:15Z",
+  "github_actions": {
+    "run_url": "https://github.com/nikiduki/tau2-agentbeats-leaderboard/actions/runs/24310859564",
+    "run_logs_url": "https://api.github.com/repos/nikiduki/tau2-agentbeats-leaderboard/actions/runs/24310859564/logs",
+    "ref": "refs/heads/submission-agentx",
+    "sha": "bba42adf17e68bdc21e5cfe1225a1d630f441e20",
+    "repository_url": "https://github.com/nikiduki/tau2-agentbeats-leaderboard",
+    "workflow_ref": "nikiduki/tau2-agentbeats-leaderboard/.github/workflows/run-scenario-fork.yml@refs/heads/submission-agentx",
+    "workflow_sha": "bba42adf17e68bdc21e5cfe1225a1d630f441e20"
+  }
+}
