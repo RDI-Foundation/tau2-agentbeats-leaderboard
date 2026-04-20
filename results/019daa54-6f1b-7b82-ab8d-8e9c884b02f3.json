@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "results": [
+    {
+      "domain": "mock",
+      "score": 9.0,
+      "max_score": 10,
+      "pass_rate": 90.0,
+      "task_rewards": {
+        "create_task_1": 1.0,
+        "create_task_1_with_env_assertions": 1.0,
+        "create_task_1_nl_eval": 1.0,
+        "update_task_1": 1.0,
+        "update_task_with_message_history": 1.0,
+        "update_task_with_initialization_data": 1.0,
+        "update_task_with_initialization_actions": 1.0,
+        "update_task_with_history_and_env_assertions": 1.0,
+        "update_task_with_user_tools": 0.0,
+        "impossible_task_1": 1.0
+      },
+      "time_used": 49.67645621299744
+    }
+  ],
+  "participants": {
+    "green": "019cf80f-8938-79c0-a221-4c7eadd43e7e",
+    "agent": "019d83f0-7bb8-7460-b07e-419552db5ec9"
+  }
+}
