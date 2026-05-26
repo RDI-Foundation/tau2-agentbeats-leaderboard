@@ -1,0 +1,102 @@
+{
+  "manifest_version": "0.1.0",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "agent_model": {
+        "type": "string",
+        "default": "gpt-4.1",
+        "description": "LLM model identifier passed to the OpenAI client (e.g. gpt-4.1, gpt-4o, anthropic/claude-sonnet-4-5). Empty string falls back to gpt-4.1."
+      },
+      "agent_openai_api_key": {
+        "type": "string",
+        "secret": true,
+        "description": "OpenAI-compatible API key (works with OpenRouter, Together, vLLM, etc. via openai_base_url)."
+      },
+      "agent_openai_base_url": {
+        "type": "string",
+        "default": "",
+        "description": "Optional. Base URL for non-OpenAI providers (e.g. https://openrouter.ai/api/v1). Leave empty for OpenAI."
+      },
+      "green_deepseek_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "green_gemini_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "green_openai_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      }
+    },
+    "required": [
+      "agent_openai_api_key"
+    ],
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.1/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "domain": "airline",
+          "user_llm": "openai/gpt-4o-mini",
+          "max_steps": 200
+        },
+        "participant_roles": {
+          "green": "green",
+          "purple1": "agent"
+        },
+        "callback_urls": {
+          "green": "${bindings.green-proxy.url}"
+        }
+      }
+    },
+    "green": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/tau2-agentbeats/refs/heads/main/amber/amber-manifest-green.json5",
+      "config": {
+        "deepseek_api_key": "${config.green_deepseek_api_key}",
+        "gemini_api_key": "${config.green_gemini_api_key}",
+        "openai_api_key": "${config.green_openai_api_key}"
+      }
+    },
+    "agent": {
+      "manifest": "https://raw.githubusercontent.com/LogoMesh/LogoMesh/main-generalized-phase2/amber-manifest.json5",
+      "config": {
+        "model": "${config.agent_model}",
+        "openai_api_key": "${config.agent_openai_api_key}",
+        "openai_base_url": "${config.agent_openai_base_url}"
+      }
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#agent.a2a"
+    },
+    {
+      "to": "#green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "green-proxy"
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "green": "019cf80f-8938-79c0-a221-4c7eadd43e7e",
+      "agent": "019e65a7-b575-78d3-8ba1-74915449f55d"
+    }
+  }
+}
