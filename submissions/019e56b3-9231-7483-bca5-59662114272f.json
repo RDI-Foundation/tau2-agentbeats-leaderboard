@@ -1,0 +1,122 @@
+{
+  "manifest_version": "0.1.0",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "agent_gemini_api_key": {
+        "type": "string",
+        "secret": true,
+        "description": "Gemini API key used only as fallback."
+      },
+      "agent_gemini_model": {
+        "type": "string",
+        "description": "Gemini fallback model."
+      },
+      "agent_local_llm_api_key": {
+        "type": "string",
+        "secret": true,
+        "description": "Bearer token for the secure local LLM proxy."
+      },
+      "agent_public_local_llm_base_url": {
+        "type": "string",
+        "description": "Public OpenAI-compatible local cluster model endpoint, ending with /v1."
+      },
+      "agent_public_local_llm_model": {
+        "type": "string",
+        "description": "Model name served by the public local endpoint."
+      },
+      "green_deepseek_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "green_gemini_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      },
+      "green_openai_api_key": {
+        "type": "string",
+        "secret": true,
+        "default": ""
+      }
+    },
+    "required": [
+      "agent_public_local_llm_base_url",
+      "agent_public_local_llm_model",
+      "agent_local_llm_api_key",
+      "agent_gemini_api_key",
+      "agent_gemini_model"
+    ],
+    "additionalProperties": false
+  },
+  "components": {
+    "gateway": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/agentbeats-gateway/refs/tags/v0.1/amber-manifest.json5",
+      "config": {
+        "assessment_config": {
+          "domain": "airline",
+          "user_llm": "openai/gpt-4o-mini",
+          "max_steps": 200
+        },
+        "participant_roles": {
+          "green": "green",
+          "purple1": "agent"
+        },
+        "callback_urls": {
+          "green": "${bindings.green-proxy.url}",
+          "purple1": "${bindings.purple1-proxy.url}"
+        }
+      }
+    },
+    "green": {
+      "manifest": "https://raw.githubusercontent.com/RDI-Foundation/tau2-agentbeats/refs/heads/main/amber/amber-manifest-green.json5",
+      "config": {
+        "deepseek_api_key": "${config.green_deepseek_api_key}",
+        "gemini_api_key": "${config.green_gemini_api_key}",
+        "openai_api_key": "${config.green_openai_api_key}"
+      }
+    },
+    "agent": {
+      "manifest": "https://raw.githubusercontent.com/Kingmaoqin/DHAI_AgenticAI/main/amber-manifest.json5",
+      "config": {
+        "gemini_api_key": "${config.agent_gemini_api_key}",
+        "gemini_model": "${config.agent_gemini_model}",
+        "local_llm_api_key": "${config.agent_local_llm_api_key}",
+        "public_local_llm_base_url": "${config.agent_public_local_llm_base_url}",
+        "public_local_llm_model": "${config.agent_public_local_llm_model}"
+      }
+    }
+  },
+  "bindings": [
+    {
+      "to": "#gateway.green",
+      "from": "#green.a2a"
+    },
+    {
+      "to": "#gateway.purple1",
+      "from": "#agent.a2a"
+    },
+    {
+      "to": "#green.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "green-proxy"
+    },
+    {
+      "to": "#agent.proxy",
+      "from": "#gateway.proxy",
+      "weak": true,
+      "name": "purple1-proxy"
+    }
+  ],
+  "exports": {
+    "results": "#gateway.results"
+  },
+  "metadata": {
+    "agentbeats_ids": {
+      "green": "019cf80f-8938-79c0-a221-4c7eadd43e7e",
+      "agent": "019e52c3-7764-76b1-bfcb-a0c3d584d964"
+    }
+  }
+}
