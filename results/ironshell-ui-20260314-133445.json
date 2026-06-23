@@ -1,0 +1,35 @@
+{
+  "participants": {
+    "agent": "019cb5e7-e77e-71b1-82d5-41516465fa92"
+  },
+  "results": [
+    {
+      "domain": "airline",
+      "score": 49.0,
+      "max_score": 50,
+      "pass_rate": 98.0,
+      "task_rewards": {}
+    },
+    {
+      "domain": "retail",
+      "score": 112.0,
+      "max_score": 114,
+      "pass_rate": 98.2,
+      "task_rewards": {}
+    },
+    {
+      "domain": "telecom",
+      "score": 111.0,
+      "max_score": 114,
+      "pass_rate": 97.4,
+      "task_rewards": {}
+    },
+    {
+      "domain": "banking_knowledge",
+      "score": 27.0,
+      "max_score": 94,
+      "pass_rate": 28.7,
+      "task_rewards": {}
+    }
+  ]
+}
