@@ -1,0 +1,22 @@
+{
+  "image_digests": {
+    "/agent": "ghcr.io/jiutian-zhiwei/mobileops-purple-agent@sha256:c99b18650b3227d8477d98a6f2ec0ea3875b453efc2ca2d7b9b7a44504e340fd",
+    "/gateway": "ghcr.io/rdi-foundation/agentbeats-gateway@sha256:30f49abcc6f0b14a2498e645cd6f1f7d0e57316f82224ba18f4cad76e08e02a7",
+    "/green": "ghcr.io/rdi-foundation/tau2-agentbeats@sha256:c5d731aefb3d0feaf9258931257c2839eaed8446f1d03bfa7e6823a15b0b9f7a"
+  },
+  "manifest_digests": {
+    "/": "sha256:vFriI0ck9YUDa3i/0GCfNfl1LF7u21/oUAgR+SVOe/s=",
+    "/agent": "sha256:FFITX7GivGLNP1ECv2P9VaiCGVzuqf1Nibp1ANXfY/M=",
+    "/gateway": "sha256:YWNLWt2Oy0QNqtALcnrq3tH63EZKGzOG1c1xI1EywTw=",
+    "/green": "sha256:wcKEZDltSU9wI5tT4awEHLcs+4B+hOuIJlTXXmSyAdU="
+  },
+  "timestamp": "2026-10-07T09:31:49Z",
+  "github_actions": {
+    "run_url": "https://github.com/RDI-Foundation/tau2-agentbeats-leaderboard/actions/runs/37593233753",
+    "ref": "refs/pull/739/merge",
+    "sha": "e7577e013323d19ec2a05390f972f68fe2d1d7f4",
+    "repository_url": "https://github.com/RDI-Foundation/tau2-agentbeats-leaderboard",
+    "workflow_ref": "RDI-Foundation/tau2-agentbeats-leaderboard/.github/workflows/quick-submit.yml@refs/pull/739/merge",
+    "workflow_sha": "e7577e013323d19ec2a05390f972f68fe2d1d7f4"
+  }
+}
